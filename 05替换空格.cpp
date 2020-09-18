@@ -9,40 +9,31 @@
 #include <vector>
 using namespace std;
 
-void replaceSpace(char *str, int length) 
+void replaceSpace(char *str, int len) 
 {
+    int cnt = 0;
+    int len2;
     if (str == nullptr)
         return;
-
-    int oldlen = strlen(str) + 1;
-    int i, blanknum = 0;
-    for (i = 0; i < oldlen; i++)
+    for (int i = 0; i < len; i++)
     {
         if (str[i] == ' ')
-        {
-            blanknum = blanknum + 1;
-        }
+            cnt++;
     }
-
-    int newlen = oldlen + blanknum * 2;
-    int j = 0;
-    for (i = 0; i <= oldlen; i++)
+    len2 = len + 2 * cnt;
+    int j = len2 - 1;
+    for (int i = len - 1; i >= 0; i--)
     {
-        if (str[oldlen - i] != ' ')
-        {
-            str[newlen - i - j] = str[oldlen - i];
-        }
+        if (str[i] != ' ')
+            str[j--] = str[i];
         else
         {
-            str[newlen - i - j] = '0';
-            str[newlen - i - j - 1] = '2';
-            str[newlen - i - j - 2] = '%';
-            j = j + 2;
+            str[j--] = '0';
+            str[j--] = '2';
+            str[j--] = '%';
         }
     }
-    printf("result: %s\n", str);
-    system("pause");
-
+    return;
 }
 
 

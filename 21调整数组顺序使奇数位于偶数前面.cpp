@@ -14,25 +14,27 @@
 #include <string>
 using namespace std;
 
-void reOrderArray(vector<int> &array) 
+void reOrderArray(vector<int> &arr)
 {
-    int len = array.size();
+    int len = arr.size();
     if (len == 0)
         return;
 
-    vector<int> result;
+    vector<int> res;
     for (int i = 0; i < len; i++)
     {
-        if (array[i] & 1)           // 奇数
-            result.push_back(array[i]);
+        if (arr[i] & 1)           // 奇数
+            res.push_back(arr[i]);
     }
     for (int i = 0; i < len; i++)
     {
-        if (!(array[i] & 1))         // 偶数
-            result.push_back(array[i]);
+        if (!(arr[i] & 1))         // 偶数
+            res.push_back(arr[i]);
     }
-    array = result;
+    arr = res;
 }
+
+
 
 // ====================测试代码====================
 int main()
